@@ -20,6 +20,7 @@ import org.wso2.carbon.identity.claim.metadata.mgt.ClaimMetadataManagementServic
 import org.wso2.carbon.registry.core.service.RegistryService;
 import org.wso2.carbon.registry.core.service.TenantRegistryLoader;
 import org.wso2.carbon.user.core.service.RealmService;
+import org.wso2.carbon.identity.role.mgt.core.RoleManagementService;
 
 /**
  * Migration Service Data Holder.
@@ -40,6 +41,8 @@ public class ISMigrationServiceDataHolder {
 
     private static String identityOracleUser;
     private static String umOracleUser;
+
+    private static RoleManagementService roleManagementService;
 
     /**
      * Method to get RegistryService.
@@ -150,5 +153,15 @@ public class ISMigrationServiceDataHolder {
     public static void setServerConfigurationService(ServerConfigurationService serverConfigurationService) {
 
         ISMigrationServiceDataHolder.serverConfigurationService = serverConfigurationService;
+    }
+
+    public static RoleManagementService getRoleManagementService() {
+
+        return roleManagementService;
+    }
+
+    public static void setRoleManagementService(RoleManagementService roleManagementService) {
+
+        ISMigrationServiceDataHolder.roleManagementService = roleManagementService;
     }
 }

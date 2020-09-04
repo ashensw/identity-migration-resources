@@ -21,6 +21,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.wso2.carbon.base.api.ServerConfigurationService;
 import org.wso2.carbon.identity.core.migrate.MigrationClient;
+import org.wso2.carbon.identity.role.mgt.core.RoleManagementService;
 import org.wso2.carbon.is.migration.MigrationClientImpl;
 import org.wso2.carbon.registry.core.service.RegistryService;
 import org.wso2.carbon.user.core.service.RealmService;
@@ -34,6 +35,8 @@ import org.wso2.carbon.user.core.service.RealmService;
  * cardinality="1..1" policy="dynamic"  bind="setServerConfigurationService" unbind="unsetServerConfigurationService"
  * @scr.reference name="registry.service" interface="org.wso2.carbon.registry.core.service.RegistryService"
  * cardinality="1..1" policy="dynamic"  bind="setRegistryService" unbind="unsetRegistryService"
+ * @scr.reference name="roleManagement.service" interface="org.wso2.carbon.identity.role.mgt.core.RoleManagementService"
+ * cardinality="1..1" policy="dynamic"  bind="setRoleManagementService" unbind="unsetRoleManagementService"
  */
 public class ISMigrationServiceComponent {
 
@@ -115,5 +118,15 @@ public class ISMigrationServiceComponent {
     protected void unsetRegistryService(RegistryService registryService) {
 
         ISMigrationServiceDataHolder.setRegistryService(null);
+    }
+
+    protected void setRoleManagementService(RoleManagementService roleManagementService) {
+
+        ISMigrationServiceDataHolder.setRoleManagementService(roleManagementService);
+    }
+
+    protected void unsetRoleManagementService(RoleManagementService roleManagementService) {
+
+        ISMigrationServiceDataHolder.setRoleManagementService(null);
     }
 }
